@@ -95,16 +95,6 @@ export const PROJECTS = [
 			'仓库内置可直接加载的 agent skills 工具目录，作为知识库与 agent 能力的载体。',
 		],
 	},
-	{
-		title: 'seer2 — 网页游戏引擎复刻研究',
-		href: 'https://github.com/wingdever/seer2',
-		period: '2026 · 个人项目',
-		tech: 'TypeScript / JavaScript / 浏览器',
-		points: [
-			'用无头 TS 内核与差分 oracle 复刻战斗机制，浏览器端 SPA 承载地图、背包与 HUD。',
-			'维护两条语义不同的数据真值树，配套构建脚本与手测验收流程。',
-		],
-	},
 ];
 
 export const SELF_EVALUATION = [
@@ -167,4 +157,59 @@ export const EMBEDDED_EVALUATION = [
 	'具备编程架构设计能力，偏爱整洁的代码与良好的代码美学，注重代码可维护性。',
 	'有良好的项目文档习惯，善于沉淀与总结经验。',
 	'实践和动手能力强，能独立完成从硬件到软件的完整开发与调试。',
+];
+
+// ========== 全栈工程师简历 ==========
+
+export const FULLSTACK_INTRO =
+	'独立开发浏览器端游戏引擎与网页 SPA，熟悉 TypeScript/JavaScript、Node 工具链、数据建模与差分测试；有嵌入式软件与 AI 应用开发背景，能完成从前端界面到构建工具的全链路开发。';
+
+export const FULLSTACK_SKILLS = [
+	{ title: '前端', detail: 'TypeScript / JavaScript、浏览器 SPA、DOM / CSS、多场景 UI（地图、背包、HUD、战斗舞台）；Ruffle 承载 SWF 内容。' },
+	{ title: 'Node 工具链', detail: 'Node.js 构建脚本、TS 内核转写为浏览器 JS、CLI 工具、差分对拍（oracle）与内核单测。' },
+	{ title: '数据工程', detail: 'JSON 内容表设计、双真值树隔离、数据转写脚本与素材清单管理；生成物不入仓库。' },
+	{ title: '工程实践', detail: '文档先行、手测验收、Git 版本控制、纯源码仓库口径；派生数据可随时重建。' },
+	{ title: '编程语言', detail: '熟练 JavaScript / TypeScript、Python、C；能用 Shell、Go、C++。' },
+];
+
+export const FULLSTACK_PROJECTS = [
+	{
+		title: 'seer2 — 网页游戏引擎复刻',
+		href: 'https://github.com/wingdever/seer2',
+		period: '2026 · 个人项目',
+		tech: 'TypeScript / JavaScript / Node.js / 浏览器',
+		points: [
+			'以「从文档与公开资料重新实现」的方法学，在浏览器中复刻经典网页游戏的玩法机制，目标是可游玩的 SPA。',
+			'实现无头 TS 战斗内核，用 build-core.mjs 转写为浏览器加载的 JS；通过差分 oracle（tools/oracle-cs、difftest.mjs）与 node --test 保证行为一致。',
+			'开发前端 SPA：地图、背包、HUD、战斗场景等多场景 UI，按阶段（U0–U5）逐区复刻并手测验收。',
+			'设计两条语义不同、不得合并的数据真值树（官方 AS3 / 改服 JSON 与重启版 JSON），配套 build-unity-data.mjs 转写脚本。',
+			'实现素材管线：Ruffle 浏览器内直渲 SWF、改服侧素材提取工具；仓库坚持纯源码口径，素材与内容表按卷分发。',
+			'建立文档先行的协作规范：状态台账、线内入口文档、手测清单，以及 GPL-3.0 + NOTICE 版权边界声明。',
+		],
+	},
+	{
+		title: 'docindex / rag / agent',
+		href: 'https://github.com/wingdever',
+		period: '2026 · 相关项目',
+		tech: 'Python / JavaScript / MCP',
+		points: [
+			'docindex：Markdown 知识库索引器，提供 CLI、本地 Web 界面与 MCP 服务，SQLite 派生缓存可随时重建。',
+			'rag：把个人知识库做成 RAG 服务并经 MCP 暴露检索工具；agent：三层解耦的 Agent 运行时（Electron UI + HTTP/IPC 传输）。',
+		],
+	},
+	{
+		title: '个人网站与自用工具',
+		period: '个人项目',
+		tech: 'Python / HTML / CSS / JavaScript',
+		points: [
+			'独立开发并运维个人网站（Python）、自用 Android 应用（音乐播放器、浏览器等），搭建 Minetest 游戏服务器。',
+		],
+	},
+];
+
+export const FULLSTACK_EVALUATION = [
+	'具备从前端界面、数据层到构建工具的全链路开发能力，习惯用文档与验收清单管理复杂项目。',
+	'擅长把大型目标拆成可独立推进的工作线，并用差分对拍与手测保证结果一致。',
+	'学习能力强，从嵌入式到 AI 应用再到网页引擎，能快速进入新领域并产出可运行成果。',
+	'重视版权边界与工程规范，坚持纯源码仓库与可重建的派生数据设计。',
 ];
