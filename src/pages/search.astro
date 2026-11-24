@@ -1,0 +1,105 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead title="搜索" description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>搜索</h1>
+			<input id="search" type="search" placeholder="搜索文章..." autocomplete="off" />
+			<p id="status" class="muted"></p>
+			<ul id="results"></ul>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	input {
+		width: 100%;
+		padding: 0.7em 1em;
+		font: inherit;
+		color: var(--text);
+		background: var(--bg);
+		border: 1px solid var(--border);
+		border-radius: 4px;
+	}
+	input:focus {
+		outline: 2px solid var(--border);
+	}
+	.muted {
+		color: var(--muted);
+		font-size: 0.9rem;
+	}
+	#results {
+		list-style: none;
+		padding: 0;
+		margin: 1.5em 0 0;
+	}
+	#results li {
+		padding: 1em 0;
+		border-bottom: 1px solid var(--border);
+	}
+	#results a {
+		border-bottom: none;
+		font-weight: 700;
+	}
+	#results p {
+		margin: 0.35em 0 0;
+		color: var(--muted);
+		font-size: 0.9rem;
+	}
+</style>
+
+<script>
+	const input = document.querySelector<HTMLInputElement>('#search')!;
+	const results = document.querySelector<HTMLUListElement>('#results')!;
+	const status = document.querySelector<HTMLParagraphElement>('#status')!;
+
+	let pagefind: any;
+	try {
+		pagefind = await import(/* @vite-ignore */ '/pagefind/pagefind.js');
+		await pagefind.init();
+	} catch {
+		status.textContent = '搜索索引在构建时生成。本地开发预览请运行 npm run build && npm run preview。';
+		input.disabled = true;
+	}
+
+	let timer: ReturnType<typeof setTimeout>;
+	input.addEventListener('input', () => {
+		clearTimeout(timer);
+		timer = setTimeout(async () => {
+			const query = input.value.trim();
+			results.replaceChildren();
+			status.textContent = '';
+			if (!query || !pagefind) return;
+
+			const search = await pagefind.search(query);
+			if (search.results.length === 0) {
+				status.textContent = '没有找到匹配的文章';
+				return;
+			}
+			status.textContent = `找到 ${search.results.length} 篇`;
+
+			for (const result of search.results.slice(0, 20)) {
+				const data = await result.data();
+				const li = document.createElement('li');
+				const a = document.createElement('a');
+				a.href = data.url;
+				a.textContent = data.meta.title || data.url;
+				const p = document.createElement('p');
+				p.textContent = data.excerpt.replace(/<[^>]*>/g, '');
+				li.append(a, p);
+				results.append(li);
+			}
+		}, 250);
+	});
+</script>

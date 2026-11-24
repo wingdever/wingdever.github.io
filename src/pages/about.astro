@@ -1,0 +1,22 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead title="关于" description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>关于</h1>
+			<p>在这里写一段自我介绍：你的背景、正在做的事、感兴趣的方向。</p>
+			<p>可以分几段，也可以列一个小标题，例如「现在」「过去」「兴趣爱好」。内容直接用 Markdown 的思路写在这里即可。</p>
+		</main>
+		<Footer />
+	</body>
+</html>
