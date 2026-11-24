@@ -1,0 +1,190 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import {
+	AUTHOR,
+	EDUCATION,
+	EMBEDDED_EVALUATION,
+	EMBEDDED_INTRO,
+	EMBEDDED_PROJECTS,
+	EMBEDDED_SKILLS,
+	EXPERIENCE,
+	LOCATION,
+	SOCIAL_LINKS,
+} from '../consts';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead
+			title={`${AUTHOR} — 嵌入式软件工程师简历`}
+			description="嵌入式软件工程师简历：STM32、复旦微 MCU、Modbus RTU、低功耗设计与上位机工具开发。"
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<header class="resume-head">
+				<h1>{AUTHOR}</h1>
+				<p class="job-title">嵌入式软件工程师 · 现居{LOCATION}</p>
+				<p class="intro">{EMBEDDED_INTRO}</p>
+				<p class="contact">
+					{SOCIAL_LINKS.map((link) => <a href={link.href}>{link.label}</a>)}
+				</p>
+				<p class="alt-resume"><a href="/">&larr; 返回 Agent 开发简历</a></p>
+			</header>
+
+			<section>
+				<h2>教育背景</h2>
+				<div class="row">
+					<strong>{EDUCATION.school}</strong>
+					<span class="period">{EDUCATION.period}</span>
+				</div>
+				<p>{EDUCATION.major}</p>
+				<p class="muted">相关课程：{EDUCATION.courses}</p>
+			</section>
+
+			<section>
+				<h2>专业技能</h2>
+				<dl class="skills">
+					{EMBEDDED_SKILLS.map((skill) => (
+						<div>
+							<dt>{skill.title}</dt>
+							<dd>{skill.detail}</dd>
+						</div>
+					))}
+				</dl>
+			</section>
+
+			<section>
+				<h2>工作经历</h2>
+				{EXPERIENCE.map((job) => (
+					<article class="entry">
+						<div class="row">
+							<h3>{job.company}</h3>
+							<span class="period">{job.period}</span>
+						</div>
+						<p class="role">{job.role}</p>
+						<ul>
+							{job.points.map((point) => <li>{point}</li>)}
+						</ul>
+					</article>
+				))}
+			</section>
+
+			<section>
+				<h2>项目经历</h2>
+				{EMBEDDED_PROJECTS.map((project) => (
+					<article class="entry">
+						<div class="row">
+							<h3>{project.title}</h3>
+							<span class="period">{project.period}</span>
+						</div>
+						<ul>
+							{project.points.map((point) => <li>{point}</li>)}
+						</ul>
+					</article>
+				))}
+			</section>
+
+			<section>
+				<h2>自我评价</h2>
+				<ul>
+					{EMBEDDED_EVALUATION.map((item) => <li>{item}</li>)}
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.resume-head {
+		margin-bottom: 3em;
+	}
+	.resume-head h1 {
+		margin-bottom: 0.2em;
+	}
+	.job-title {
+		color: var(--muted);
+		margin-bottom: 0.4em;
+	}
+	.intro {
+		max-width: 34em;
+	}
+	.contact {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.25em;
+	}
+	.alt-resume {
+		margin: 0.75em 0 0;
+		color: var(--muted);
+		font-size: 0.9rem;
+	}
+	section {
+		margin-bottom: 3em;
+	}
+	h2 {
+		margin-bottom: 1em;
+		padding-bottom: 0.3em;
+		border-bottom: 1px solid var(--border);
+	}
+	.row {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 1em;
+	}
+	.period {
+		color: var(--muted);
+		font-size: 0.9rem;
+		white-space: nowrap;
+	}
+	.muted,
+	.role {
+		color: var(--muted);
+	}
+	.skills {
+		margin: 0;
+	}
+	.skills > div {
+		display: grid;
+		grid-template-columns: 6em 1fr;
+		gap: 1em;
+		padding: 0.5em 0;
+	}
+	.skills dt {
+		font-weight: 700;
+	}
+	.skills dd {
+		margin: 0;
+		color: var(--muted);
+	}
+	.entry {
+		margin-bottom: 2em;
+	}
+	.entry h3 {
+		margin: 0;
+		font-size: 1.1rem;
+	}
+	.entry ul {
+		margin: 0.5em 0 0;
+		padding-left: 1.3em;
+	}
+	.entry li {
+		margin-bottom: 0.4em;
+	}
+	@media (max-width: 600px) {
+		.row {
+			flex-direction: column;
+			gap: 0.2em;
+		}
+		.skills > div {
+			grid-template-columns: 1fr;
+			gap: 0.2em;
+		}
+	}
+</style>
