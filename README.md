@@ -15,7 +15,7 @@ npm run dev
 
 ## 改主页信息
 
-编辑 `src/consts.ts`：站点名、简介、所在城市、项目列表、社交链接。这个文件集中了所有需要替换的占位内容。
+站点信息和简历内容集中在 `src/consts.ts`：姓名、职业、简介、联系方式，以及教育、技能、工作经历、项目经历、自我评价。改这个文件即可更新首页。
 
 站点地址在 `astro.config.mjs` 的 `site` 字段，当前为 `https://wingdever.github.io`。
 
