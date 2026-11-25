@@ -87,6 +87,9 @@ import {
 							<span class="period">{project.period}</span>
 						</div>
 						<p class="tech">{project.tech}</p>
+						{project.href && (
+							<p class="repo-url">GitHub：<a href={project.href}>{project.href}</a></p>
+						)}
 						<ul>
 							{project.points.map((point) => <li>{point}</li>)}
 						</ul>
@@ -183,6 +186,19 @@ import {
 		margin: 0.3em 0 0;
 		color: var(--muted);
 		font-size: 0.85rem;
+	}
+	.repo-url {
+		margin: 0.25em 0 0;
+		color: var(--muted);
+		font-size: 0.8rem;
+		word-break: break-all;
+	}
+	.repo-url a {
+		border-bottom: none;
+		color: var(--muted);
+	}
+	.repo-url a:hover {
+		color: var(--text);
 	}
 	.entry ul {
 		margin: 0.5em 0 0;

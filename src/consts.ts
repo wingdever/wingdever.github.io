@@ -188,13 +188,30 @@ export const FULLSTACK_PROJECTS = [
 		],
 	},
 	{
-		title: 'docindex / rag / agent',
-		href: 'https://github.com/wingdever',
-		period: '2026 · 相关项目',
-		tech: 'Python / JavaScript / MCP',
+		title: 'docindex — 文档索引器',
+		href: 'https://github.com/wingdever/docindex',
+		period: '2026 · 个人项目',
+		tech: 'Python / SQLite / MCP',
 		points: [
-			'docindex：Markdown 知识库索引器，提供 CLI、本地 Web 界面与 MCP 服务，SQLite 派生缓存可随时重建。',
-			'rag：把个人知识库做成 RAG 服务并经 MCP 暴露检索工具；agent：三层解耦的 Agent 运行时（Electron UI + HTTP/IPC 传输）。',
+			'对 Markdown 知识库做 front matter 与链接校验，提供 CLI、本地 Web 界面与 MCP 服务，SQLite 派生缓存可随时重建。',
+		],
+	},
+	{
+		title: 'rag — 个人知识库 RAG 服务',
+		href: 'https://github.com/wingdever/rag',
+		period: '2026 · 个人项目',
+		tech: 'Python / llamaIndex / MCP',
+		points: [
+			'把个人知识库做成 RAG 服务，经 MCP 暴露检索工具，Embedding 后端可切换。',
+		],
+	},
+	{
+		title: 'agent — 微型 AI Agent',
+		href: 'https://github.com/wingdever/agent',
+		period: '2026 · 个人项目',
+		tech: 'JavaScript / Node.js / Electron',
+		points: [
+			'三层解耦的 Agent 运行时，含 agent-loop、工具注册、skills、workflow 与 HTTP/IPC 传输。',
 		],
 	},
 	{
