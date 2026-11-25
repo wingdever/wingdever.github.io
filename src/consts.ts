@@ -174,17 +174,15 @@ export const FULLSTACK_SKILLS = [
 
 export const FULLSTACK_PROJECTS = [
 	{
-		title: 'seer2 — 网页游戏引擎复刻',
-		href: 'https://github.com/wingdever/seer2',
-		period: '2026 · 个人项目',
-		tech: 'TypeScript / JavaScript / Node.js / 浏览器',
+		title: 'labor_manager-psql — 劳动计时与民主决策系统',
+		href: 'https://github.com/buqingshan-official/labor_manager-psql',
+		period: '2026 · 参与开发',
+		tech: 'Go / Gin / PostgreSQL / JavaScript',
 		points: [
-			'以「从文档与公开资料重新实现」的方法学，在浏览器中复刻经典网页游戏的玩法机制，目标是可游玩的 SPA。',
-			'实现无头 TS 战斗内核，用 build-core.mjs 转写为浏览器加载的 JS；通过差分 oracle（tools/oracle-cs、difftest.mjs）与 node --test 保证行为一致。',
-			'开发前端 SPA：地图、背包、HUD、战斗场景等多场景 UI，按阶段（U0–U5）逐区复刻并手测验收。',
-			'设计两条语义不同、不得合并的数据真值树（官方 AS3 / 改服 JSON 与重启版 JSON），配套 build-unity-data.mjs 转写脚本。',
-			'实现素材管线：Ruffle 浏览器内直渲 SWF、改服侧素材提取工具；仓库坚持纯源码口径，素材与内容表按卷分发。',
-			'建立文档先行的协作规范：状态台账、线内入口文档、手测清单，以及 GPL-3.0 + NOTICE 版权边界声明。',
+			'参与开发基于 Go 1.24 + Gin + PostgreSQL 的劳动计时与民主决策系统，提供 REST API 与适配移动端的响应式前端。',
+			'覆盖劳动计时、权重工分自动计算（工时 × 权重）、加班计算、图片上传、评价审核与 Excel 导出等模块。',
+			'参与议题管理：多级意见、投票表决、议题标记、已读状态与收藏功能，配套用户认证与权限管理。',
+			'前端抽离 apiUtil.js 集中管理共享 API 调用、消除页面间重复定义；Docker + systemd 部署与自动备份脚本。',
 		],
 	},
 	{
@@ -229,4 +227,51 @@ export const FULLSTACK_EVALUATION = [
 	'擅长把大型目标拆成可独立推进的工作线，并用差分对拍与手测保证结果一致。',
 	'学习能力强，从嵌入式到 AI 应用再到网页引擎，能快速进入新领域并产出可运行成果。',
 	'重视版权边界与工程规范，坚持纯源码仓库与可重建的派生数据设计。',
+];
+
+// ========== 游戏开发简历 ==========
+
+export const GAME_INTRO =
+	'用 Godot / GDScript 开发回合制策略游戏，用 TypeScript 复刻网页游戏引擎，熟悉回合制战斗、数据驱动关卡、差分对拍与可验证的玩法实现。';
+
+export const GAME_SKILLS = [
+	{ title: '游戏引擎', detail: 'Godot 4.7 / GDScript；浏览器端 TypeScript / JavaScript，运行时构建棋盘、单位与 HUD。' },
+	{ title: '玩法系统', detail: '回合制战斗流程、行动点与召唤卷轴、单位与关卡数据驱动、花园养成、中英文本地化。' },
+	{ title: '图形与 UI', detail: '2D 渲染与自适应窗口、多场景 UI（地图 / 背包 / HUD / 战斗）、Ruffle 承载 SWF 内容。' },
+	{ title: '工程实践', detail: '数值与关卡表驱动（CSV / JSON）、差分 oracle 对拍、内核单测、文档体系与外部资产分离。' },
+];
+
+export const GAME_PROJECTS = [
+	{
+		title: 'pvz — 回合制策略游戏',
+		href: 'https://github.com/wingdever/pvz',
+		period: '2026 · 个人项目',
+		tech: 'GDScript / Godot 4.7',
+		points: [
+			'用 Godot 4.7 + GDScript 实现回合制策略游戏，棋盘、单位与 HUD 全部在运行时构建，场景文件保持极简。',
+			'实现回合流程（波次入场、行动点、植物行动、僵尸行动、结算）、召唤卷轴、融合、花园养成与战役关卡。',
+			'做数据驱动设计：规则写在 PROMPT.md，数值与关卡拆成 CSV / JSON 表，关卡清单单独维护。',
+			'实现任意窗口拉伸与全屏下的等比缩放、棋盘居中，配套中英文本地化，缺字体时整体回落英文。',
+			'仓库只追踪第一来源，大体积音频、字体与第三方插件按清单外部获取，附首次构建说明与自检脚本。',
+		],
+	},
+	{
+		title: 'seer2 — 网页游戏引擎复刻',
+		href: 'https://github.com/wingdever/seer2',
+		period: '2026 · 个人项目',
+		tech: 'TypeScript / JavaScript / Node.js / 浏览器',
+		points: [
+			'以「从文档与公开资料重新实现」的方法学，在浏览器中复刻经典网页游戏的玩法机制，目标是可游玩的 SPA。',
+			'实现无头 TS 战斗内核，用 build-core.mjs 转写为浏览器加载的 JS；通过差分 oracle 与 node --test 保证行为一致。',
+			'开发前端 SPA：地图、背包、HUD、战斗场景等多场景 UI，按阶段（U0–U5）逐区复刻并手测验收。',
+			'设计两条语义不同、不得合并的数据真值树，配套转写脚本；素材按卷分发，仓库坚持纯源码口径。',
+		],
+	},
+];
+
+export const GAME_EVALUATION = [
+	'能从零搭建可运行的游戏项目，兼顾玩法机制、界面呈现与工程规范。',
+	'熟悉数据驱动设计，把规则、数值和关卡拆成可维护的表与文档。',
+	'重视可验证性，用差分对拍与自检保证行为一致。',
+	'学习能力强，从嵌入式到 Web 引擎再到 Godot，能快速掌握新引擎与工具链。',
 ];
