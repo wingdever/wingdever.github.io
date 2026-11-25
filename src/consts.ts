@@ -13,9 +13,13 @@ export const TARGET = '求职意向：广东深圳 · Agent 开发工程师';
 
 // 联系方式：只公开适合放在网站上的邮箱和代码主页
 export const SOCIAL_LINKS = [
-	{ label: 'GitHub', href: 'https://github.com/wingdever' },
-	{ label: 'Email', href: 'mailto:3615973773@qq.com' },
+	{ label: 'GitHub', href: 'https://github.com/wingdever', value: 'https://github.com/wingdever' },
+	{ label: 'Email', href: 'mailto:3615973773@qq.com', value: '3615973773@qq.com' },
 ];
+
+// Agent 简历：大学课程中真正相关的部分 + 实际自学方向
+export const AGENT_RELATED_STUDIES =
+	'计算机网络；自学 Agent 架构（agent-loop / memory / tool / MCP）、RAG、Prompt / Context Engineering、AI Coding。';
 
 // 教育背景
 export const EDUCATION = {
